@@ -62,6 +62,27 @@ class ToolRegistry:
         """统一执行入口；返回 JSON 字符串结果。"""
         tool = self.get(name)
         log.debug("执行工具 %s，参数：%s", name, arguments)
+
+        # 过滤多余参数：只保留工具签名声明过的参数
+        # （某些中转 API 可能在 schema 转译时塞入 _ 等占位字段）
+        import inspect
+        try:
+            sig = inspect.signature(tool.func)
+            valid_keys = set(sig.parameters.keys())
+            # 若函数签名里有 **kwargs 形参，则全部放行
+            has_var_kw = any(
+                p.kind == inspect.Parameter.VAR_KEYWORD
+                for p in sig.parameters.values()
+            )
+            if not has_var_kw:
+                filtered = {k: v for k, v in arguments.items() if k in valid_keys}
+                dropped = set(arguments.keys()) - valid_keys
+                if dropped:
+                    log.debug("丢弃 %s 的多余参数：%s", name, dropped)
+                arguments = filtered
+        except (ValueError, TypeError):
+            pass  # 无法内省时按原样传
+
         try:
             result = tool.func(**arguments)
             return json.dumps(result, ensure_ascii=False)

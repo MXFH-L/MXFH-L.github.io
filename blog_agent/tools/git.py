@@ -13,7 +13,12 @@ from ..config import AgentConfig
 
 
 def _run(cmd: list[str], cwd: Path) -> subprocess.CompletedProcess:
-    return subprocess.run(cmd, cwd=cwd, capture_output=True, text=True, encoding="utf-8")
+    # Windows 上 git 默认输出可能不是 UTF-8；errors="replace" 防止解码崩溃
+    return subprocess.run(
+        cmd, cwd=cwd,
+        capture_output=True, text=True,
+        encoding="utf-8", errors="replace",
+    )
 
 
 def build_git_tools(cfg: AgentConfig) -> list:

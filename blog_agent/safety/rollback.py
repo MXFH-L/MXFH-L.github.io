@@ -26,6 +26,7 @@ class RollbackManager:
         r = subprocess.run(
             ["git", "rev-parse", "HEAD"],
             cwd=self.blog_root, capture_output=True, text=True,
+            encoding="utf-8", errors="replace",
         )
         if r.returncode != 0:
             log.warning("无法获取 HEAD（不是 git 仓库或无任何 commit），跳过快照。")
@@ -47,6 +48,7 @@ class RollbackManager:
         r = subprocess.run(
             ["git", "reset", "--hard", self._snapshot],
             cwd=self.blog_root, capture_output=True, text=True,
+            encoding="utf-8", errors="replace",
         )
         if r.returncode != 0:
             raise RollbackError(f"回滚失败：{r.stderr.strip()}")
@@ -55,6 +57,7 @@ class RollbackManager:
         subprocess.run(
             ["git", "clean", "-fd", "--", "source/_posts/"],
             cwd=self.blog_root, capture_output=True, text=True,
+            encoding="utf-8", errors="replace",
         )
         log.info("回滚完成。")
         return True

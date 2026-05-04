@@ -5,7 +5,7 @@ from .git import build_git_tools
 from .todo import build_todo_tools
 from .filesystem import build_filesystem_tools
 from .verify import verify_post_file, verify_frontmatter, VerificationError
-
+from .hexo import build_hexo_tools
 from ..config import AgentConfig
 from ..harness.todo import TodoStore
 from ..harness.state import StateStore
@@ -22,6 +22,8 @@ def build_default_registry(cfg: AgentConfig,
     for tool in build_post_tools(cfg):
         reg.register(tool)
     for tool in build_git_tools(cfg):
+        reg.register(tool)
+    for tool in build_hexo_tools(cfg):    # 新增
         reg.register(tool)
     for tool in build_todo_tools(todo_store, state_store, state_ref):
         reg.register(tool)
