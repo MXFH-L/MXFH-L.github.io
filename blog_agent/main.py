@@ -23,7 +23,7 @@ from .utils.exceptions import AgentError
 
 BANNER = """
 ╔══════════════════════════════════════════════════╗
-║   🤖 梦醒繁花落 · 博客智能体 (Engineered)       ║
+║   🤖 梦醒繁花落 · 博客智能体 (Engineered)         ║
 ║   https://mxfh-l.github.io/                      ║
 ╚══════════════════════════════════════════════════╝
 
