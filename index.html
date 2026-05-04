@@ -1,306 +1,224 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  
-  
-  <title>Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:locale" content="en_US">
-<meta property="article:author" content="John Doe">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>梦醒繁花落</title><meta name="author" content="Yuyuan Wu"><meta name="copyright" content="Yuyuan Wu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="保持鲜活的人生需要不断构建、维持耗散结构">
+<meta property="og:type" content="website">
+<meta property="og:title" content="梦醒繁花落">
+<meta property="og:url" content="https://mxfh-l.github.io/index.html">
+<meta property="og:site_name" content="梦醒繁花落">
+<meta property="og:description" content="保持鲜活的人生需要不断构建、维持耗散结构">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://mxfh-l.github.io/images/avatar.jpg">
+<meta property="article:author" content="Yuyuan Wu">
 <meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  
-  
-    <link rel="shortcut icon" href="/favicon.png">
-  
-  
-  
-<link rel="stylesheet" href="/css/style.css">
+<meta name="twitter:image" content="https://mxfh-l.github.io/images/avatar.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "梦醒繁花落",
+  "alternateName": [
+    "mxfh-l.github.io"
+  ],
+  "url": "https://mxfh-l.github.io/"
+}</script><link rel="shortcut icon" href="/images/favicon.svg"><link rel="canonical" href="https://mxfh-l.github.io/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.4"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
 
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
   
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
     
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
-
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
   
-  
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
-
-<meta name="generator" content="Hexo 8.1.1"></head>
-
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '梦醒繁花落',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'home'
+}</script><meta name="generator" content="Hexo 8.1.1"></head><body><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url(/images/banner.jpeg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">梦醒繁花落</span></a></span><div id="menus"></div></nav><div id="site-info"><h1 id="site-title">梦醒繁花落</h1><div id="site-subtitle"><span id="subtitle"></span></div><div id="site_social_icons"><a class="social-icon" href="https://www.zhihu.com/people/51-7-40-97" target="_blank" title="知乎"><i class="fab fa-zhihu"></i></a><a class="social-icon" href="https://blog.csdn.net/w2103108255" target="_blank" title="CSDN"><i class="fas fa-c"></i></a></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts nc" id="recent-posts"><div class="recent-post-items"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/05/04/2026-05-04-2026-05-04-harness-engineering-overview/" title="Harness Engineering 概述">Harness Engineering 概述</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-05-04T10:59:22.000Z" title="发表于 2026-05-04 18:59:22">2026-05-04</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a></span></div><div class="content"> title: Harness Engineering 概述date: 2026-05-04 19:00:00tags:  - AI Agent  - LLM  - Harness Engineering  - 软件架构  - Prompt Engineeringcategories:  - 计算机引言：当一个 30 步的任务在第 15 步崩掉设想这样的场景：你让一个 AI Agent 帮你完成一个跨越 30 个步骤的复杂任务——读文档、调 API、写代码、跑测试、改 Bug、再跑测试……前 14 步它都干得不错。到第 15 步，它突然把第 3 步收集到的关键参数”忘了”，调用了一个根本不存在的工具，返回失败之后它选择了”任务已完成”，潇洒收工。 你换了一个更强的模型，又跑了一遍。这次它撑到了第 22 步。 问题真的出在模型本身吗？ 过去两年，AI 圈在不断追逐”更好的提示词”和”更聪明的上下文”。但当任务从”写一段文案”升级到”完成一项工程”，我们终于意识到：模型不是马力不够，是没装上缰绳。这就是 Harness Engineering 想解决的事。 一、从 PE 到 CE 再...</div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/images/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Yuyuan Wu</div><div class="author-info-description">保持鲜活的人生需要不断构建、维持耗散结构</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">1</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/MXFH-L"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://www.zhihu.com/people/51-7-40-97" target="_blank" title="知乎"><i class="fab fa-zhihu"></i></a><a class="social-icon" href="https://blog.csdn.net/w2103108255" target="_blank" title="CSDN"><i class="fas fa-c"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到我的世界，这里一半是理性的克制，一半是感性的自由。</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/05/04/2026-05-04-2026-05-04-harness-engineering-overview/" title="Harness Engineering 概述">Harness Engineering 概述</a><time datetime="2026-05-04T10:59:22.000Z" title="发表于 2026-05-04 18:59:22">2026-05-04</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>分类</span>
+            
+          </div>
+          <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/"><span class="card-category-list-name">计算机</span><span class="card-category-list-count">1</span></a></li>
+          </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/Prompt-Engineering/" style="font-size: 1.1em; color: #999">Prompt Engineering</a> <a href="/tags/AI-Agent/" style="font-size: 1.1em; color: #999">AI Agent</a> <a href="/tags/Harness-Engineering/" style="font-size: 1.1em; color: #999">Harness Engineering</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84/" style="font-size: 1.1em; color: #999">软件架构</a> <a href="/tags/LLM/" style="font-size: 1.1em; color: #999">LLM</a></div></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>归档</span>
       
     </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-        
-          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
-        
-        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
-      </div>
-    </div>
-  </div>
-</header>
-
-      <div class="outer">
-        <section id="main">
   
-    <article id="post-2026-05-04-2026-05-04-harness-engineering-overview" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2026/05/04/2026-05-04-2026-05-04-harness-engineering-overview/" class="article-date">
-  <time class="dt-published" datetime="2026-05-04T10:59:22.000Z" itemprop="datePublished">2026-05-04</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2026/05/04/2026-05-04-2026-05-04-harness-engineering-overview/">Harness Engineering 概述</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
+    <ul class="card-archive-list">
       
-        <hr>
-<h2 id="title-Harness-Engineering-概述date-2026-05-04-19-00-00tags-AI-Agent-LLM-Harness-Engineering-软件架构-Prompt-Engineeringcategories-计算机"><a href="#title-Harness-Engineering-概述date-2026-05-04-19-00-00tags-AI-Agent-LLM-Harness-Engineering-软件架构-Prompt-Engineeringcategories-计算机" class="headerlink" title="title: Harness Engineering 概述date: 2026-05-04 19:00:00tags:  - AI Agent  - LLM  - Harness Engineering  - 软件架构  - Prompt Engineeringcategories:  - 计算机"></a>title: Harness Engineering 概述<br>date: 2026-05-04 19:00:00<br>tags:<br>  - AI Agent<br>  - LLM<br>  - Harness Engineering<br>  - 软件架构<br>  - Prompt Engineering<br>categories:<br>  - 计算机</h2><h2 id="引言：当一个-30-步的任务在第-15-步崩掉"><a href="#引言：当一个-30-步的任务在第-15-步崩掉" class="headerlink" title="引言：当一个 30 步的任务在第 15 步崩掉"></a>引言：当一个 30 步的任务在第 15 步崩掉</h2><p>设想这样的场景：你让一个 AI Agent 帮你完成一个跨越 30 个步骤的复杂任务——读文档、调 API、写代码、跑测试、改 Bug、再跑测试……前 14 步它都干得不错。到第 15 步，它突然把第 3 步收集到的关键参数”忘了”，调用了一个根本不存在的工具，返回失败之后它选择了”任务已完成”，潇洒收工。</p>
-<p>你换了一个更强的模型，又跑了一遍。这次它撑到了第 22 步。</p>
-<p>问题真的出在模型本身吗？</p>
-<p>过去两年，AI 圈在不断追逐”更好的提示词”和”更聪明的上下文”。但当任务从”写一段文案”升级到”完成一项工程”，我们终于意识到：<strong>模型不是马力不够，是没装上缰绳</strong>。这就是 <strong>Harness Engineering</strong> 想解决的事。</p>
-<h2 id="一、从-PE-到-CE-再到-HE：三种范式的演进"><a href="#一、从-PE-到-CE-再到-HE：三种范式的演进" class="headerlink" title="一、从 PE 到 CE 再到 HE：三种范式的演进"></a>一、从 PE 到 CE 再到 HE：三种范式的演进</h2><p>围绕 LLM 的工程实践，大致经历了三个层次：</p>
-<table>
-<thead>
-<tr>
-<th>范式</th>
-<th>关注点</th>
-<th>一句话定位</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><strong>PE（Prompt Engineering）</strong></td>
-<td>精心构造<strong>单次指令</strong></td>
-<td>让模型这一次回答得更好</td>
-</tr>
-<tr>
-<td><strong>CE（Context Engineering）</strong></td>
-<td>为每个决策点<strong>动态构建上下文</strong></td>
-<td>让模型每一步都有合适的信息</td>
-</tr>
-<tr>
-<td><strong>HE（Harness Engineering）</strong></td>
-<td>设计<strong>完整的控制系统</strong></td>
-<td>让模型能稳定可靠地完成长任务</td>
-</tr>
-</tbody></table>
-<p>PE 和 CE 都是在”优化模型输出”，关注点仍然落在那次推理本身。HE 则把视野拉远了一层：它不再把模型当成主角，而是把模型当作整个系统中的一个<strong>组件</strong>——一个聪明但不靠谱的组件——并围绕它建造起一整套基础设施。</p>
-<p>LangChain 团队把这件事浓缩成一个公式：</p>
-<blockquote>
-<p><strong>Agent &#x3D; Model + Harness</strong></p>
-</blockquote>
-<p>Harness 字面意思是”马具、缰绳”。模型是那匹马，提供”思考”的力量；Harness 则是马鞍、缰绳、马蹄铁，负责让它真的能拉动车，而且不会撂蹶子把人摔下去。</p>
-<h2 id="二、模型的”先天缺陷”：为什么必须有-Harness"><a href="#二、模型的”先天缺陷”：为什么必须有-Harness" class="headerlink" title="二、模型的”先天缺陷”：为什么必须有 Harness"></a>二、模型的”先天缺陷”：为什么必须有 Harness</h2><p>要理解 Harness 的价值，得先承认一个事实：<strong>LLM 本质上是 stateless（无状态）的</strong>。它每一次推理都是一次孤立的函数调用，所谓”记忆”只不过是把历史塞回上下文窗口里再让它看一眼。这种结构带来四个挥之不去的工程难题：</p>
-<h3 id="1-Context-Rot（上下文腐烂）"><a href="#1-Context-Rot（上下文腐烂）" class="headerlink" title="1. Context Rot（上下文腐烂）"></a>1. Context Rot（上下文腐烂）</h3><p>随着对话或任务推进，上下文窗口越塞越满。即使没爆，模型的注意力也会逐渐发散——早期的关键信息被淹没在中段的工具输出和冗长的中间结果里。表面上”记得”，实际上”看不见”。</p>
-<h3 id="2-Hallucinated-Tool-Calls（工具调用幻觉）"><a href="#2-Hallucinated-Tool-Calls（工具调用幻觉）" class="headerlink" title="2. Hallucinated Tool Calls（工具调用幻觉）"></a>2. Hallucinated Tool Calls（工具调用幻觉）</h3><p>模型可能调用根本不存在的工具，或者<strong>伪造工具的返回结果</strong>。这在长链路任务里尤其致命：一个虚构的 API 响应会顺着调用链一路污染下游决策。</p>
-<h3 id="3-Lost-State-on-Failure（失败时状态丢失）"><a href="#3-Lost-State-on-Failure（失败时状态丢失）" class="headerlink" title="3. Lost State on Failure（失败时状态丢失）"></a>3. Lost State on Failure（失败时状态丢失）</h3><p>任务跑到一半崩了，怎么续？模型自己不知道刚才到第几步、改过哪些文件、留下哪些副作用。没有外部状态机，重启等于从零开始。</p>
-<h3 id="4-Early-Stopping（过早停止）"><a href="#4-Early-Stopping（过早停止）" class="headerlink" title="4. Early Stopping（过早停止）"></a>4. Early Stopping（过早停止）</h3><p>任务还没真正完成，模型就笃定地说”已经完成了”。它对”完成”的判断完全依赖语言层面的合理性，而非真实世界的验证。</p>
-<p>这四个缺陷没有一个能仅靠”换个更大的模型”或”写个更好的 prompt”彻底解决。它们是<strong>架构层的问题，必须用架构层的手段去对抗</strong>。</p>
-<h2 id="三、Agent-Harness-是什么"><a href="#三、Agent-Harness-是什么" class="headerlink" title="三、Agent Harness 是什么"></a>三、Agent Harness 是什么</h2><p>Harness 指的是<strong>模型本身之外的所有东西</strong>。具体地说，一个完整的 Harness 至少包含：</p>
-<ul>
-<li><strong>System Prompts</strong>：系统级提示词，定义角色与边界</li>
-<li><strong>Tools &#x2F; Skills &#x2F; MCPs</strong>：工具与技能，包括其描述和调用协议</li>
-<li><strong>Bundled Infrastructure</strong>：捆绑的基础设施——文件系统、沙盒、浏览器等</li>
-<li><strong>Orchestration Logic</strong>：编排逻辑——子代理生成、任务交接、模型路由<ul>
-<li>模型路由值得单独提一句：给一个 Agent 配置多个不同强度的模型，根据任务复杂度动态选择，在 Token 成本与推理性能之间动态取舍。MoE（混合专家）、Dense 模型、RPM（每分钟请求数）、TPM（每分钟 token 数）等概念在这里成为现实的工程参数。</li>
-</ul>
-</li>
-<li><strong>Hooks &#x2F; Middleware</strong>：用于确定性执行的钩子与中间件——上下文压缩、任务延续性、代码 lint 检查等</li>
-</ul>
-<p>而 Harness 要承担的核心职责包括：</p>
-<ul>
-<li>工具执行</li>
-<li>内存管理</li>
-<li>状态持久化</li>
-<li>错误恢复</li>
-<li>上下文编排</li>
-<li><strong>评估与度量</strong>：任务成功率、效率、成本、鲁棒性、安全性、一致性</li>
-<li>日志记录与可复现性</li>
-</ul>
-<p>注意”评估与度量”被加粗了——这是把 Agent 从”能跑的 demo”变成”能上生产的系统”的分界线。<strong>没有可度量的指标，就不存在工程化</strong>。</p>
-<blockquote>
-<p>不是模型的能力不够，而是你没有驾驭的能力。</p>
-</blockquote>
-<h2 id="四、判断一个系统是否采用了-Harness-架构：七大核心能力"><a href="#四、判断一个系统是否采用了-Harness-架构：七大核心能力" class="headerlink" title="四、判断一个系统是否采用了 Harness 架构：七大核心能力"></a>四、判断一个系统是否采用了 Harness 架构：七大核心能力</h2><p>架构是一种思想而不是某个具体框架。判断一个 Agent 系统是否真正采用了 Harness 架构，可以对照下面这七项能力：</p>
-<h3 id="1-规划能力（Planning）"><a href="#1-规划能力（Planning）" class="headerlink" title="1. 规划能力（Planning）"></a>1. 规划能力（Planning）</h3><p>把大任务拆成可执行的小任务，并能根据进展动态调整计划。计划本身需要持久化、可观察、可被人类介入修改。</p>
-<h3 id="2-虚拟文件系统"><a href="#2-虚拟文件系统" class="headerlink" title="2. 虚拟文件系统"></a>2. 虚拟文件系统</h3><p><strong>对抗 Context Rot 的核心手段</strong>。让 Agent 把中间产物（搜索结果、API 响应、草稿等）写入”文件”，需要时再按需读取。本质是把”工作记忆”从有限的上下文窗口外置到外部存储——和人类用纸笔做笔记是一回事。</p>
-<h3 id="3-任务委托-子智能体（Sub-agents）"><a href="#3-任务委托-子智能体（Sub-agents）" class="headerlink" title="3. 任务委托 &#x2F; 子智能体（Sub-agents）"></a>3. 任务委托 &#x2F; 子智能体（Sub-agents）</h3><p>把子任务分派给独立的子智能体，<strong>实现上下文隔离和算力分配</strong>。父 Agent 只看到子 Agent 的最终摘要，不必把它整个工作流都塞回自己的上下文里。</p>
-<h3 id="4-上下文管理"><a href="#4-上下文管理" class="headerlink" title="4. 上下文管理"></a>4. 上下文管理</h3><p>这是一组组合拳：</p>
-<ul>
-<li><strong>输入上下文</strong>：系统提示词、待办列表、长期记忆、技能、文件系统工具说明等，在启动时注入</li>
-<li><strong>运行时上下文压缩</strong>：卸载大型工具输入和结果到外部存储</li>
-<li><strong>摘要化</strong>：用模型自己生成精炼摘要，替换冗长的历史</li>
-<li><strong>长期记忆</strong>：跨会话保存关键信息</li>
-</ul>
-<h3 id="5-代码执行与安全沙箱"><a href="#5-代码执行与安全沙箱" class="headerlink" title="5. 代码执行与安全沙箱"></a>5. 代码执行与安全沙箱</h3><p>遵循 “<strong>Trust the LLM + 隔离执行环境</strong>“ 的安全哲学：信任模型的判断力，但把它关在沙箱里。允许它写代码、跑代码，但不允许它伤到真实环境。</p>
-<h3 id="6-人工介入（Human-in-the-loop）"><a href="#6-人工介入（Human-in-the-loop）" class="headerlink" title="6. 人工介入（Human-in-the-loop）"></a>6. 人工介入（Human-in-the-loop）</h3><p>关键决策点必须可以暂停、等待人类确认。一个不能被人类拦截的 Agent，是一颗按了启动按钮的炮弹。</p>
-<h3 id="7-技能包加载与管理（Skills）"><a href="#7-技能包加载与管理（Skills）" class="headerlink" title="7. 技能包加载与管理（Skills）"></a>7. 技能包加载与管理（Skills）</h3><p>按需加载领域技能，而不是把所有工具一股脑塞给模型。技能是可组合、可分发、可升级的——这一点正在让 Agent 生态走向类似软件生态的形态。</p>
-<h2 id="五、总结：架构是一种思想"><a href="#五、总结：架构是一种思想" class="headerlink" title="五、总结：架构是一种思想"></a>五、总结：架构是一种思想</h2><p>回到开头的那个崩在第 15 步的任务：真正的解法不是再换一个更聪明的模型，而是<strong>给它装上 Harness</strong>——加一个虚拟文件系统让它不会忘事，加一套子智能体让它能分工，加一层沙箱让它敢于出错，加一组 Hook 让它在压缩上下文时不丢关键信息，加一个人工介入入口让你能在它走偏时及时拉缰绳。</p>
-<p>Harness Engineering 不是某一个 SDK，也不是某一个开源框架，它是一种<strong>架构哲学</strong>：承认模型的不完美，并用工程化的方式去补足那些不完美。</p>
-<p>如果说 Prompt Engineering 教我们如何”提问”，Context Engineering 教我们如何”喂料”，那么 Harness Engineering 教我们的是——<strong>如何驾驭</strong>。</p>
-<p>把模型当成一匹烈马，而不是一个许愿池。<br>然后，给它装上缰绳。</p>
-
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2026/05/">
+            <span class="card-archive-list-date">
+              五月 2026
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
       
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2026/05/04/2026-05-04-2026-05-04-harness-engineering-overview/" data-id="cuidZa5zq5XwCHQXB-wNjcXJJ" data-title="Harness Engineering 概述" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AI-Agent/" rel="tag">AI Agent</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Harness-Engineering/" rel="tag">Harness Engineering</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LLM/" rel="tag">LLM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Prompt-Engineering/" rel="tag">Prompt Engineering</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84/" rel="tag">软件架构</a></li></ul>
+    </ul>
+  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站信息</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">1</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总浏览量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2026-05-04T11:34:52.813Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By Yuyuan Wu</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.1</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.4</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.4"></script><script src="/js/main.js?v=5.5.4"></script><div class="js-pjax"><script>window.typedJSFn = {
+  init: str => {
+    window.typed = new Typed('#subtitle', Object.assign({
+      strings: str,
+      startDelay: 300,
+      typeSpeed: 150,
+      loop: true,
+      backSpeed: 50,
+    }, null))
+  },
+  run: subtitleType => {
+    if (false) {
+      if (typeof Typed === 'function') {
+        subtitleType()
+      } else {
+        btf.getScript('https://cdn.jsdelivr.net/npm/typed.js@3.0.0/dist/typed.umd.min.js').then(subtitleType)
+      }
+    } else {
+      subtitleType()
+    }
+  },
+  processSubtitle: (content, extraContents = []) => {
+    if (false) {
+      const sub = ["不做出新的抉择，命运的课题就会反复降临。"].slice()
 
-    </footer>
-  </div>
-  
-</article>
+      if (extraContents.length > 0) {
+        sub.unshift(...extraContents)
+      }
 
+      if (typeof content === 'string') {
+        sub.unshift(content)
+      } else if (Array.isArray(content)) {
+        sub.unshift(...content)
+      }
 
-
-  
-
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AI-Agent/" rel="tag">AI Agent</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Harness-Engineering/" rel="tag">Harness Engineering</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LLM/" rel="tag">LLM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Prompt-Engineering/" rel="tag">Prompt Engineering</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84/" rel="tag">软件架构</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/AI-Agent/" style="font-size: 10px;">AI Agent</a> <a href="/tags/Harness-Engineering/" style="font-size: 10px;">Harness Engineering</a> <a href="/tags/LLM/" style="font-size: 10px;">LLM</a> <a href="/tags/Prompt-Engineering/" style="font-size: 10px;">Prompt Engineering</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84/" style="font-size: 10px;">软件架构</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/05/">May 2026</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2026/05/04/2026-05-04-2026-05-04-harness-engineering-overview/">Harness Engineering 概述</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      
-      &copy; 2026 John Doe<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-
-<script src="/js/jquery-3.6.4.min.js"></script>
-
-
-
-  
-<script src="/fancybox/jquery.fancybox.min.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
-
-
-
-
-
-  </div>
-</body>
-</html>
+      sub.length > 0 && typedJSFn.init(sub)
+    } else {
+      document.getElementById('subtitle').textContent = typeof content === 'string' ? content :
+        (Array.isArray(content) && content.length > 0 ? content[0] : '')
+    }
+  }
+}
+btf.addGlobalFn('pjaxSendOnce', () => { typed.destroy() }, 'typedDestroy')
+</script><script>function subtitleType () {
+  typedJSFn.processSubtitle(["不做出新的抉择，命运的课题就会反复降临。"])
+}
+typedJSFn.run(subtitleType)</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
